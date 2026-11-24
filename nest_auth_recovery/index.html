@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nest Recovery</title><style>body{font:16px system-ui;margin:1rem;background:#fafafa;color:#222}button{padding:.7rem;margin:.2rem}#screen{height:65vh;background:#202124;overflow:hidden}pre{white-space:pre-wrap} @media(prefers-color-scheme:dark){body{background:#171717;color:#eee}}</style></head><body><h2>Nest Authentication Recovery</h2><p>Sign in to your own Nest account in this server-side browser. Google verification must be completed manually. No Google password is stored by this app.</p><pre id="status">Loading status…</pre><button id="open">Open Nest website</button><button id="test">Test browser session (no Homebridge changes)</button><button id="connect">Connect browser display</button><p>Automatic recovery is controlled in the app's Configuration tab. Keep it disabled until the browser test passes.</p><div id="screen"></div><script type="module">
+import RFB from './novnc/core/rfb.js';
+let rfb;
+const s=document.getElementById('status');
+async function refresh(){try{const r=await fetch('./status',{cache:'no-store'});s.textContent=JSON.stringify(await r.json(),null,2)}catch{s.textContent='Status unavailable'}}
+async function command(path){try{const r=await fetch('./'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});if(!r.ok)alert('Request not accepted; check status.');await refresh()}catch{alert('Request failed')}}
+document.getElementById('open').onclick=()=>command('open');
+document.getElementById('test').onclick=()=>command('test');
+document.getElementById('connect').onclick=()=>{if(rfb)rfb.disconnect();const u=new URL('./vnc',location.href);u.protocol=location.protocol==='https:'?'wss:':'ws:';rfb=new RFB(document.getElementById('screen'),u.href,{wsProtocols:['binary']});rfb.scaleViewport=true;rfb.resizeSession=false;};
+refresh();setInterval(refresh,5000);
+</script></body></html>
