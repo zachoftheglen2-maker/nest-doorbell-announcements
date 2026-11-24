@@ -1,0 +1,20 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Nest Doorbell Announcements",
+        "description": "Configure your existing local announcement relay. This version does not authenticate directly with Google or replace the relay.",
+        "data": {
+          "url": "Announcement endpoint",
+          "timeout": "Request timeout (seconds)"
+        }
+      }
+    },
+    "error": {
+      "invalid_url": "Enter a valid HTTP or HTTPS endpoint without credentials, query or fragment."
+    },
+    "abort": {
+      "single_instance_allowed": "Only one announcement provider is supported in this version."
+    }
+  }
+}
