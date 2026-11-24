@@ -1,0 +1,35 @@
+name: Nest Authentication Recovery
+version: "0.1.0"
+slug: nest_auth_recovery
+description: Experimental NestAccfactory authentication monitor and persistent browser recovery
+url: https://github.com/zachoftheglen2-maker/nest-doorbell-announcements/tree/main/nest_auth_recovery
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+init: false
+ingress: true
+ingress_port: 8099
+panel_icon: mdi:shield-refresh
+panel_title: Nest Recovery
+panel_admin: true
+hassio_api: true
+hassio_role: manager
+homeassistant_api: true
+options:
+  homebridge_app: "0656e7b8_homebridge"
+  homebridge_url: "http://0656e7b8-homebridge:8581"
+  homebridge_username: ""
+  homebridge_password: ""
+  account_name: "Google Nest"
+  automatic_recovery: false
+  check_interval: 60
+schema:
+  homebridge_app: str
+  homebridge_url: url
+  homebridge_username: str
+  homebridge_password: password
+  account_name: str
+  automatic_recovery: bool
+  check_interval: int(30,300)
