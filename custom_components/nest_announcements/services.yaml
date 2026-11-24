@@ -1,0 +1,6 @@
+play:
+  name: Play announcement
+  description: Play the provider's configured recording. Does not operate any lock. Returns transmission evidence when a response is requested.
+status:
+  name: Announcement status
+  description: Read the last recorded result and busy state without playing audio. Not an active authentication or readiness check.
