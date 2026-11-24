@@ -1,0 +1,12 @@
+{
+  "domain": "nest_announcements",
+  "name": "Nest Doorbell Announcements",
+  "version": "0.1.0",
+  "config_flow": true,
+  "integration_type": "service",
+  "iot_class": "local_polling",
+  "documentation": "https://github.com/zachoftheglen2-maker/nest-doorbell-announcements",
+  "issue_tracker": "https://github.com/zachoftheglen2-maker/nest-doorbell-announcements/issues",
+  "codeowners": [],
+  "requirements": []
+}
